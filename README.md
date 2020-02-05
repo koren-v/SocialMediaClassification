@@ -16,7 +16,7 @@ When I get a pretty bad result in the previous notebook, I decided that the main
 
 ## VaderForFeatures
 
-To get more features from tweets I used Vader. [Vader](https://github.com/cjhutto/vaderSentiment) (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. I expected to get a god correlation between new features and target, but it was not so. [More details](https://github.com/koren-v/SocialMediaClassification/blob/master/VaderForFeatures.ipynb).
+To get more features from tweets I used Vader. [Vader](https://github.com/cjhutto/vaderSentiment) (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool that is specifically attuned to sentiments expressed in social media. I expected to get a good correlation between new features and target, but it was not so. [More details](https://github.com/koren-v/SocialMediaClassification/blob/master/VaderForFeatures.ipynb).
 
 <p align="center">
   <img src="/images/correlation.PNG">
