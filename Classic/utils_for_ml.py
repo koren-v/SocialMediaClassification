@@ -4,10 +4,12 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import f1_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 import gc
 
 
-def cross_val(features, labels, model_type = 'forest', n_estimators = 100, print_feature_importances = False, C = 50, n_folds = 5):
+def cross_val(features, labels, model_type = 'forest', n_estimators = 100, print_feature_importances = False, C = 50,
+                    k_neighbors = 10, power = 2 ,n_folds = 5):
  
     print('Training Data Shape: ', features.shape)
 
@@ -26,12 +28,14 @@ def cross_val(features, labels, model_type = 'forest', n_estimators = 100, print
 
         if model_type == 'forest':
           model = RandomForestClassifier(n_estimators=n_estimators, criterion = 'entropy', max_features = None, n_jobs = -1)
-        else:
+        elif model_type == 'svm':
           model = SVC(C=C, probability=True)
+        else: 
+          model = KNeighborsClassifier(n_neighbors=k_neighbors, p=power)
 
         model.fit(train_features, train_labels)
 
-        if print_feature_importances:
+        if print_feature_importances and model_type == 'forest':
           print(model.feature_importances_)
 
         out_of_fold[valid_indices] = model.predict_proba(valid_features)[:, 1]
